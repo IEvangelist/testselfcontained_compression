@@ -1,0 +1,40 @@
+{
+    "version": "0.1.0",
+    "command": "cmd",
+    "isShellCommand": true,
+    "showOutput": "silent",
+    "args": [
+        "/c"
+    ],
+    "tasks": [
+        {
+            "taskName": "restore",
+            "suppressTaskName": true,
+            "args" : ["dotnet", "restore"],
+            "showOutput": "always",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "publish win10-x64",
+            "suppressTaskName": true,
+            "args" : ["dotnet", "publish", "--configuration", "Release", "--runtime", "win10-x64", "--framework", "netcoreapp1.1"],
+            "showOutput": "always",
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "build",
+            "suppressTaskName": true,
+            "args" : ["dotnet", "build", "--configuration", "Debug", "--runtime", "win10-x64" ],
+            "showOutput": "always",
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "info",
+            "suppressTaskName": true,
+            "args" : ["dotnet", "--info"],
+            "showOutput": "always",
+            "isBuildCommand": false
+        }
+    ]
+}
